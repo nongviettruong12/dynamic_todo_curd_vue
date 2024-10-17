@@ -5,19 +5,21 @@
         <button @click="addTodos">Add todos</button>
        <div>
             <div>My todoList</div>
-            <ul>
-              <li v-for="item, itemIndex in todoList":key="itemIndex">
-                {{ item }}
-              </li>
-            </ul>
+            <TodoList :myProps="todoList"/>
        </div>
   </div>
 </template>
+
 <script>
+import TodoList from './components/TodoList.vue'
+
 export default {
+  components: {
+    TodoList
+  },
   data() {
     return {
-      todoList: ['go to dentist', 'kill this dog'],
+      todoList: ['go to dentist', 'kill this dog','Drink water'],
       value: undefined,
     };
   },
