@@ -1,5 +1,8 @@
 <template> 
-        <li>{{ toDo }}</li>
+        <li>{{ toDo }}
+            <button @click="remove">Remove todo</button>
+        </li>
+        
 </template>
 <script>
 export default {
@@ -7,6 +10,11 @@ export default {
         toDo: {
             type: String,
             default: ''
+        }
+    },
+    methods: {
+        remove() {
+            this.$emit('removeThisToDo', this.toDo);
         }
     }
 }

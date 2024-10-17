@@ -1,21 +1,25 @@
 <template>
-        <ul>
-              <Todo v-for="item, itemIndex in myProps " :key="itemIndex" :toDo="item" />
-            </ul>
+  <ul>
+    <Todo v-for="item, itemIndex in myProps" :key="itemIndex" :toDo="item" @removeThisToDo="sendTheMessage" />
+  </ul>
 </template>
+
 <script>
-import Todo from './Todo.vue'
+import Todo from "./Todo.vue";
 export default {
   components: {
-    Todo
+    Todo,
   },
   props: {
-    myProps:{
+    myProps: {
       type: Array,
-      default: () =>[
-
-      ]
-    }
-  }
-}
+      default: () => [],
+    },
+  },
+  methods: {
+    sendTheMessage(toDo) {
+      this.$emit("removeToDo", toDo);
+    },
+  },
+};
 </script>

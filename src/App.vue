@@ -5,7 +5,7 @@
         <button @click="addTodos">Add todos</button>
        <div>
             <div>My todoList</div>
-            <TodoList :myProps="todoList"/>
+            <TodoList :myProps="todoList" @removeToDo="removeElements"/>
        </div>
   </div>
 </template>
@@ -19,7 +19,7 @@ export default {
   },
   data() {
     return {
-      todoList: ['go to dentist', 'kill this dog','Drink water'],
+      todoList: ['go to dentist', 'Drink water'],
       value: undefined,
     };
   },
@@ -28,6 +28,9 @@ export default {
       this.todoList.push(this.value);
       this.value = undefined;
     },
+    removeElements(toDo) {
+      this.todoList.splice(this.todoList.indexOf(toDo), 1)
+    }
   }
   
 };
